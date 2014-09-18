@@ -9,6 +9,11 @@ package mylab2;
 /**
  *
  * @author mdeboer1
+ * 
+ * This is the interface that operates as the abstract layer in the DIP.  It has
+ * final properties that inheriting classes need, has a setTip and getTip method
+ * that needs to be overridden in any implementing class.
+ * 
  */
 public interface TipCalculator {
     public static final double MIN_BILL = 0.00;

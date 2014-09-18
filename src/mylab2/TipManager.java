@@ -8,6 +8,10 @@ package mylab2;
 /**
  *
  * @author mdeboer1
+ * 
+ * This classes manages the tip calculation operations.  It has methods to set the
+ * tip information from the requisite tip class.
+ * 
  */
 public class TipManager {
     private TipCalculator tip;
@@ -16,13 +20,13 @@ public class TipManager {
         this.tip = tip;
     }
     
-    public double setFoodTip(ServiceQuality quality, double billAmount){
+    public double getFoodTip(ServiceQuality quality, double billAmount){
         
         tip.setTip(quality, billAmount);
         return tip.getTip();
     }
     
-    public double setBaggageTip(ServiceQuality quality, double bagCount){
+    public double getBaggageTip(ServiceQuality quality, double bagCount){
         
         tip.setTip(quality, bagCount);
         return tip.getTip();

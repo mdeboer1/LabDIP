@@ -9,6 +9,16 @@ package mylab2;
 /**
  *
  * @author mdeboer1
+ * 
+ * This class implements TipCalculator.  It receives information passed from
+ * the TipManager class, calculates the tip using the ServiceQuality enumerated
+ * types, and returns the tip amount to the Manager.  No getters and setters are
+ * provided because tip property is calculated in the setTip method and the other
+ * property is final.
+ * 
+ * Values for ServiceQuality and billAmount are intentionally not store in this 
+ * class.  This is a class to calculate a tip, not a class that is to record information
+ * for later retrieval.  
  */
 public class FoodServiceTipCalculator implements TipCalculator{
     private static final String BILL_ENTRY_ERR =
@@ -38,6 +48,4 @@ public class FoodServiceTipCalculator implements TipCalculator{
     public double getTip() {
         return tip;
     }
-    
-    
 }

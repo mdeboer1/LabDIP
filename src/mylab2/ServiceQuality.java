@@ -9,6 +9,8 @@ package mylab2;
 /**
  *
  * @author mdeboer1
+ * 
+ * This is an enumerated class that controls the quality of service received.
  */
 public enum ServiceQuality {
     GOOD, FAIR, POOR

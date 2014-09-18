@@ -8,6 +8,8 @@ package mylab2;
 /**
  *
  * @author mdeboer1
+ * 
+ * This is the startup class for testing the LabDIP assignment.
  */
 public class Startup {
     
@@ -26,8 +28,8 @@ public class Startup {
         
 //        manager1.setFoodTip(good, 100.00);
 //        manager2.setBaggageTip(fair, 4);
-        System.out.println(manager1.setFoodTip(good, 100.00));
-        System.out.println(manager2.setBaggageTip(fair, 4));
+        System.out.println(manager1.getFoodTip(good, 100.00));
+        System.out.println(manager2.getBaggageTip(fair, 4));
     }
     
     
