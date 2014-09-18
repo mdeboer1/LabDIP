@@ -11,5 +11,9 @@ package mylab2;
  * @author mdeboer1
  */
 public class FoodServiceTipCalculator implements TipCalculator{
+    private static final String BILL_ENTRY_ERR =
+            "Error: bill must be greater than or equal to " + MIN_BILL;
+    private double bill;
+    
     
 }
