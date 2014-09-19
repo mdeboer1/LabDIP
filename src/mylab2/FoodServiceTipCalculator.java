@@ -22,7 +22,7 @@ package mylab2;
  */
 public class FoodServiceTipCalculator implements TipCalculator{
     private static final String BILL_ENTRY_ERR =
-            "Error: bill must be greater than or equal to " + MIN_BILL;
+            "Error: bill must be greater than " + MIN_BILL;
     private double tip;
 
     public FoodServiceTipCalculator() {
@@ -31,6 +31,15 @@ public class FoodServiceTipCalculator implements TipCalculator{
 
     @Override
     public void setTip(ServiceQuality quality, double billAmount) {
+        // Validation for arguments.  Bill amount is purposefully tested against
+        // 0.01 to eliminate zero or negative amount bills.
+        if (billAmount < 0.01){
+            System.out.println(BILL_ENTRY_ERR);
+        }
+        else if (quality == null){
+            throw new IllegalArgumentException (
+            "error: Service Quality measure must be set");
+        }
         switch(quality) {
             case GOOD:
                 tip = billAmount * GOOD_RATE;

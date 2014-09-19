@@ -22,6 +22,7 @@ package mylab2;
  * for later retrieval.  
  */
 public class BaggageServiceTipCalculator implements TipCalculator {
+
     private static final double MAX_BILL = 100.00;
     private static final String BILL_ENTRY_ERR =
             "Error: bill must be between " + MIN_BILL + " and "
@@ -35,7 +36,17 @@ public class BaggageServiceTipCalculator implements TipCalculator {
 
     @Override
     public void setTip(ServiceQuality quality, double bagCount) {
-        
+        if (bagCount <= 0){
+            throw new IllegalArgumentException (
+            "error: back count must be more than zero");
+        }
+        else if ((bagCount * baseTipPerBag) > MAX_BILL || (bagCount * baseTipPerBag) < MIN_BILL ){
+            System.out.println(BILL_ENTRY_ERR);
+        }
+        if (quality == null){
+            throw new IllegalArgumentException (
+            "error: Service Quality measure must be set");
+        }
         switch(quality) {
             case GOOD:
                 tip = baseTipPerBag * bagCount * (1 + GOOD_RATE);
