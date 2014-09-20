@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mylab1;
+package dip.lab1.student.solution1;
 
 /**
  *
  * @author mdeboer1
  */
-public interface Employee {
-    
+public enum WageType {
+    SALARIED, HOURLY
 }

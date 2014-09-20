@@ -19,7 +19,6 @@ public class Startup {
         ServiceQuality fair = ServiceQuality.FAIR;
         ServiceQuality poor = ServiceQuality.POOR;
 
-        
         TipCalculator tip1 = new FoodServiceTipCalculator();
         TipCalculator tip2 = new BaggageServiceTipCalculator();
         
