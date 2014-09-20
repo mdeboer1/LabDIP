@@ -20,8 +20,12 @@ public interface TipCalculator {
     public static final double GOOD_RATE = 0.20;
     public static final double FAIR_RATE = 0.15;
     public static final double POOR_RATE = 0.10;
-    // someTipVariable is used to hold either billAmount or bagCount dependent on
-    //what class it is implemented in
+    
+    /** @param someTipVariable is used to hold either billAmount or bagCount dependent on
+    *what class it is implemented in
+    * @param quality is the enum type passed to determine the level of service
+    * quality received
+    */ 
     public abstract void setTip(ServiceQuality quality, double someTipVariable);
     public abstract double getTip();
     
