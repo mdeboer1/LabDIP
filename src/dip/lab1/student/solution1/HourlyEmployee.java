@@ -17,13 +17,17 @@ public class HourlyEmployee implements Employee {
     private double hourlyWage, hoursWorked;
     
     public HourlyEmployee(double hourlyWage, double hoursWorked){
-        this.hourlyWage = hourlyWage;
-        this.hoursWorked = hoursWorked;
+        setAnnualPay(hourlyWage, hoursWorked);
     }
     
     @Override
     public double getAnnualPay() {
         return hourlyWage * hoursWorked;
+    }
+    
+    private void setAnnualPay(double hourlyWage, double hoursWorked){
+        this.hourlyWage = hourlyWage;
+        this.hoursWorked = hoursWorked;
     }
     
 }

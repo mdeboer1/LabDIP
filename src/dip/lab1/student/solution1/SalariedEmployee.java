@@ -17,14 +17,17 @@ public class SalariedEmployee implements Employee {
     private double annualSalary, annualBonus;
     
     public SalariedEmployee(double annualSalary, double annualBonus) {
-
-        this.annualSalary = annualSalary;
-        this.annualBonus = annualBonus;
+        setAnnualPay(annualSalary, annualBonus);
     }
 
     @Override
     public double getAnnualPay() {
         return annualSalary + annualBonus;
+    }
+    
+    private void setAnnualPay(double annualSalary, double annualBonus){
+        this.annualSalary = annualSalary;
+        this.annualBonus = annualBonus;
     }
 }
 
