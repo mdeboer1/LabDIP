@@ -14,8 +14,8 @@ package dip.lab1.student.solution1;
 public class HRService {
     private Employee employee;
     
-    public HRService(Employee e){
-        employee = e;
+    public HRService(Employee employee){
+        this.employee = employee;
     }
     
     public double getAnnualPay(){

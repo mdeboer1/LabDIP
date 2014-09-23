@@ -21,20 +21,24 @@ package mylab2;
  * for later retrieval.  
  */
 public class FoodServiceTipCalculator implements TipCalculator{
-    private static final String BILL_ENTRY_ERR =
-            "Error: bill must be greater than " + MIN_BILL;
+    private double minBill = 0.00;
+    private double goodRate = 0.20;
+    private double fairRate = 0.15;
+    private double poorRate = 0.10;
+    private String billEntryError =
+            "Error: bill must be greater than " + minBill;
     private double tip;
 
-    public FoodServiceTipCalculator() {
-        
+    public FoodServiceTipCalculator(ServiceQuality quality, double billAmount) {
+        setTip(quality, billAmount);
     }
 
-    @Override
-    public void setTip(ServiceQuality quality, double billAmount) {
+
+    private void setTip(ServiceQuality quality, double billAmount) {
         // Validation for arguments.  Bill amount is purposefully tested against
         // 0.01 to eliminate zero or negative amount bills.
         if (billAmount < 0.01){
-            System.out.println(BILL_ENTRY_ERR);
+            System.out.println(billEntryError);
         }
         else if (quality == null){
             throw new IllegalArgumentException (
@@ -42,13 +46,13 @@ public class FoodServiceTipCalculator implements TipCalculator{
         }
         switch(quality) {
             case GOOD:
-                tip = billAmount * GOOD_RATE;
+                tip = billAmount * goodRate;
                 break;
             case FAIR:
-                tip = billAmount * FAIR_RATE;
+                tip = billAmount * fairRate;
                 break;
             case POOR:
-                tip = billAmount * POOR_RATE;
+                tip = billAmount * poorRate;
                 break;
         }
     }
@@ -57,4 +61,66 @@ public class FoodServiceTipCalculator implements TipCalculator{
     public double getTip() {
         return tip;
     }
+
+    private double getMinBill() {
+        return minBill;
+    }
+
+    private void setMinBill(double minBill) {
+        if(minBill < 0) {
+            throw new IllegalArgumentException(
+                    "error: base tip must be greater than or equal to zero");
+        }
+        this.minBill = minBill;
+    }
+
+    private double getGoodRate() {
+        return goodRate;
+    }
+
+    private void setGoodRate(double goodRate) {
+        if(goodRate < 0) {
+            throw new IllegalArgumentException(
+                    "error: base tip must be greater than or equal to zero");
+        }
+        this.goodRate = goodRate;
+    }
+
+    private double getFairRate() {
+        return fairRate;
+    }
+
+    private void setFairRate(double fairRate) {
+        if(fairRate < 0) {
+            throw new IllegalArgumentException(
+                    "error: base tip must be greater than or equal to zero");
+        }
+        this.fairRate = fairRate;
+    }
+
+    private double getPoorRate() {
+        return poorRate;
+    }
+
+    private void setPoorRate(double poorRate) {
+        if(poorRate < 0) {
+            throw new IllegalArgumentException(
+                    "error: base tip must be greater than or equal to zero");
+        }
+        this.poorRate = poorRate;
+    }
+
+    private String getBillEntryFee() {
+        return billEntryError;
+    }
+
+    private void setBillEntryFee(String billEntryError) {
+        if (billEntryError == null || billEntryError.length() == 0){
+            throw new IllegalArgumentException(
+                    "error: minBill must be greater than zero");
+        }
+        this.billEntryError = billEntryError;
+    }
+    
+    
 }

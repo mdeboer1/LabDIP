@@ -20,16 +20,21 @@ public class TipManager {
         this.tip = tip;
     }
     
-    public double getFoodTip(ServiceQuality quality, double billAmount){
-        
-        tip.setTip(quality, billAmount);
-        return tip.getTip();
+   public double getCalculatedTip(){
+       return tip.getTip();
+   }
+
+    public TipCalculator getTip() {
+        return tip;
     }
-    
-    public double getBaggageTip(ServiceQuality quality, double bagCount){
-        
-        tip.setTip(quality, bagCount);
-        return tip.getTip();
+
+    public void setTip(TipCalculator tip) {
+        if (tip == null){
+            throw new IllegalArgumentException(
+                    "error: this object has  not been instantiated");
+        }
+        this.tip = tip;
     }
-    
+   
+   
 }

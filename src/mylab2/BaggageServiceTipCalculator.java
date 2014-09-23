@@ -22,26 +22,28 @@ package mylab2;
  * for later retrieval.  
  */
 public class BaggageServiceTipCalculator implements TipCalculator {
-
-    private static final double MAX_BILL = 100.00;
-    private static final String BILL_ENTRY_ERR =
-            "Error: bill must be between " + MIN_BILL + " and "
-            + MAX_BILL;
+    private double minBill = 0.00;
+    private double goodRate = 0.20;
+    private double fairRate = 0.15;
+    private double poorRate = 0.10;
+    private double maxBill = 100.00;
+    private String billEntryError =
+            "Error: bill must be between " + minBill + " and "
+            + maxBill;
     private double baseTipPerBag = 1.00;
     private double tip;
 
-    public BaggageServiceTipCalculator() {
-        
+    public BaggageServiceTipCalculator(ServiceQuality quality, double bagCount) {
+        setTip(quality, bagCount);
     }
 
-    @Override
     public void setTip(ServiceQuality quality, double bagCount) {
         if (bagCount <= 0){
             throw new IllegalArgumentException (
             "error: back count must be more than zero");
         }
-        else if ((bagCount * baseTipPerBag) > MAX_BILL || (bagCount * baseTipPerBag) < MIN_BILL ){
-            System.out.println(BILL_ENTRY_ERR);
+        else if ((bagCount * baseTipPerBag) > maxBill || (bagCount * baseTipPerBag) < minBill ){
+            System.out.println(billEntryError);
         }
         if (quality == null){
             throw new IllegalArgumentException (
@@ -49,13 +51,13 @@ public class BaggageServiceTipCalculator implements TipCalculator {
         }
         switch(quality) {
             case GOOD:
-                tip = baseTipPerBag * bagCount * (1 + GOOD_RATE);
+                tip = baseTipPerBag * bagCount * (1 + goodRate);
                 break;
             case FAIR:
-                tip = baseTipPerBag * bagCount * (1 + FAIR_RATE);
+                tip = baseTipPerBag * bagCount * (1 + fairRate);
                 break;
             case POOR:
-                tip = baseTipPerBag * bagCount * (1 + POOR_RATE);
+                tip = baseTipPerBag * bagCount * (1 + poorRate);
                 break;
         }
     }
@@ -67,15 +69,89 @@ public class BaggageServiceTipCalculator implements TipCalculator {
     
     // Getters and setters for baseTipPerBag.  Added incase the base amount needs to change
     
-    public double getBaseTipPerBag() {
+    private double getBaseTipPerBag() {
         return baseTipPerBag;
     }
 
-    public void setBaseTipPerBag(double baseTipPerBag) {
+    private void setBaseTipPerBag(double baseTipPerBag) {
         if(baseTipPerBag < 0) {
             throw new IllegalArgumentException(
                     "error: base tip must be greater than or equal to zero");
         }
         this.baseTipPerBag = baseTipPerBag;
     }
+
+    private double getMinBill() {
+        return minBill;
+    }
+
+    private void setMinBill(double minBill) {
+        if(minBill < 0){
+            throw new IllegalArgumentException(
+                    "error: minBill must be greater than zero");
+        }
+        this.minBill = minBill;
+    }
+
+    private double getGoodRate() {
+        return goodRate;
+    }
+
+    private void setGoodRate(double goodRate) {
+        if(goodRate < 0){
+            throw new IllegalArgumentException(
+                    "error: minBill must be greater than zero");
+        }    
+        this.goodRate = goodRate;
+    }
+
+    private double getFairRate() {
+        return fairRate;
+    }
+
+    private void setFairRate(double fairRate) {
+        if(fairRate < 0){
+            throw new IllegalArgumentException(
+                    "error: minBill must be greater than zero");
+        }
+        this.fairRate = fairRate;
+    }
+
+    private double getPoorRate() {
+        return poorRate;
+    }
+
+    private void setPoorRate(double poorRate) {
+        if(poorRate < 0){
+            throw new IllegalArgumentException(
+                    "error: minBill must be greater than zero");
+        }
+        this.poorRate = poorRate;
+    }
+
+    private double getMaxBill() {
+        return maxBill;
+    }
+
+    private void setMaxBill(double maxBill) {
+        if(maxBill < 0){
+            throw new IllegalArgumentException(
+                    "error: minBill must be greater than zero");
+        }
+        this.maxBill = maxBill;
+    }
+
+    private String getBillEntryError() {
+        return billEntryError;
+    }
+
+    private void setBillEntryError(String billEntryError) {
+        if (billEntryError == null || billEntryError.length() == 0){
+            throw new IllegalArgumentException(
+                    "error: minBill must be greater than zero");
+        }
+        this.billEntryError = billEntryError;
+    }
+    
+    
 }
