@@ -21,4 +21,18 @@ public class HRService {
     public double getAnnualPay(){
         return employee.getAnnualPay();
     }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        if (employee == null){
+            throw new IllegalArgumentException(
+                    "error: this object has  not been instantiated");
+        }
+        this.employee = employee;
+    }
+    
+    
 }

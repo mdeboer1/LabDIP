@@ -13,14 +13,17 @@ package dip.lab1.student.solution1;
 public class Startup {
     public static void main(String[] args) {
         
-    Employee emp1 = new HourlyEmployee(10.00, 1500);
-    Employee emp2 = new SalariedEmployee(65000.00, 10000.00);
-    
-    HRService hr1 = new HRService(emp1);
-    HRService hr2 = new HRService(emp2);
-    
-    System.out.println(hr1.getAnnualPay());
-    System.out.println(hr2.getAnnualPay());
-    
+        WageType hourly = WageType.HOURLY;
+        WageType salaried = WageType.SALARIED;
+        
+        
+        Employee emp1 = new HourlyEmployee(10.00, 1500, hourly);
+        Employee emp2 = new SalariedEmployee(65000.00, 10000.00, salaried);
+
+        HRService hr1 = new HRService(emp1);
+        HRService hr2 = new HRService(emp2);
+
+        System.out.println(hr1.getAnnualPay());
+        System.out.println(hr2.getAnnualPay());
     }
 }
